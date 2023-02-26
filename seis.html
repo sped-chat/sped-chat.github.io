@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)https://seis.org/login -->
+<html lang="en" data-ng-app="app" nighteye="disabled" class="ng-scope"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+    
+    <title data-ng-bind="title" class="ng-binding">SEIS -  Login</title>
+    <style>
+        /* This helps the ng-show/ng-hide animations start at the right place. */
+
+        /* Since Angular has this but needs to load, this gives us the class early. */
+
+        .ng-hide {
+            display: none !important;
+        }
+    </style>
+    <!--<base href="/">--><base href=".">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="https://seis.org/images/favicon.png">
+    <link rel="stylesheet" type="text/css" href="./seis_files/css">
+    <link rel="stylesheet" href="./seis_files/lib-4f7f14bc0f.css">
+
+    <link rel="stylesheet" href="./seis_files/dataTables.bootstrap.css">
+
+    <link rel="stylesheet" href="./seis_files/app-746ff73fdb.css">
+
+    <script src="./seis_files/widget.js"></script>
+<style></style><script src="./seis_files/ai.2.min.js"></script></head>
+
+<body data-new-gr-c-s-check-loaded="14.1098.0" data-gr-ext-installed="">
+    <!-- ngInclude: 'app/layout/layout.html' --><div id="page-container" ng-include="&#39;app/layout/layout.html&#39;" class="ng-scope" style=""><div ng-controller="LayoutController as vm" class="responsive">
+	<div id="mobile-nav" style="height: 1440px;">
+		<button class="hamburger hamburger--collapse mobile-nav-burger pull-right" type="button">
+			<span class="hamburger-box">
+				<span class="hamburger-inner"></span>
+			</span>
+		</button>
+		<ul>
+			<li><a ui-sref="home" href="https://seis.org/">Home</a></li>
+			<li><a ui-sref="contact" href="https://seis.org/contact">Contact Us</a></li>
+			<li><a ui-sref="login" href="https://seis.org/login">Login</a></li>
+		</ul>
+		<div class="social-media-icons" ng-hide="vm.isLoggedIn">
+			<a href="https://www.facebook.com/SEIS.org" target="_blank" title="SEIS Facebook"><i class="fa fa-facebook"></i></a>
+			<a href="http://www.twitter.com/CodeStackSJ" target="_blank" title="SEIS Twitter"><i class="fa fa-twitter"></i></a>
+			<a href="http://www.instagram.com/CodeStackSJ" target="_blank" title="SEIS Instagram"><i class="fa fa-instagram"></i></a>
+			<a href="http://www.youtube.com/CodeStackSJ" target="_blank" title="SEIS YouTube"><i class="fa fa-youtube"></i></a>
+		</div>
+	</div>
+	<div class="main-content-wrap">
+		<div data-ng-show="vm.systemAlert" class="hidden-print system-notification ng-hide" id="systemNotification">
+			<span data-ng-bind-html="vm.systemAlert.message" class="ng-binding"></span>
+		</div>
+		<header id="header" class="production">
+			<div class="header-container container hidden-print">
+				<div style="flex: 1;">
+					
+					<!-- ngIf: !vm.isLoggedIn --><a class="main-logo ng-scope" href="https://seis.org/" ng-if="!vm.isLoggedIn">
+						<img alt="Special Education Information System" src="./seis_files/logo.svg">
+					</a><!-- end ngIf: !vm.isLoggedIn -->
+					<!-- ngIf: vm.isLoggedIn -->
+					<!-- ngIf: vm.environment === 'feature' -->
+				</div>
+				<div class="header-actions ng-hide" id="topIcons" ng-show="vm.isLoggedIn">
+					<div class="action-icon">
+						<a href="https://seis.org/messages/inbox" uib-tooltip="Message Center" tooltip-append-to-body="true">
+							<i class="fa fa-envelope topIcons fa-inverse"></i>
+						</a>
+						<span class="badge badge-notify ng-binding ng-hide" ng-show="vm.messageCount" ng-bind="vm.messageCount"></span>
+					</div>
+					<div class="action-icon">
+						<a href="https://seis.org/recycle" uib-tooltip="Recycle Bin" tooltip-append-to-body="true">
+							<i class="fa fa-recycle topIcons fa-inverse"></i>
+						</a>
+						<span class="badge badge-notify ng-binding ng-hide" ng-bind="vm.recycleBin" ng-show="vm.recycleBin &gt; 0">0</span>
+					</div>
+					<div class="action-icon">
+						<a href="javascript:void(0)" ng-click="vm.showPrintQueue()" uib-tooltip="Print Queue" tooltip-append-to-body="true">
+							<i class="fa fa-print topIcons fa-inverse"></i>
+						</a>
+						<span class="badge badge-notify ng-binding ng-hide" ng-show="vm.printJobCount &gt; 0" ng-bind="vm.printJobCount">0</span>
+					</div>
+					<!-- ngIf: vm.user -->
+					<!-- <div ng-if="vm.user" class="user-dropdown dropdown">
+						<i class="fa fa-user" aria-hidden="true"></i>
+						<span class="user-name">
+							{{vm.user.Name}}
+						</span>
+						<ul class="dropdown-menu dropdown-menu-right" style="min-width: 100%;">
+							<li data-ng-if="!vm.isDemo">
+								<a ui-sref="profile" ui-sref-opts="{ reload: true }">Manage Profile</a>
+							</li>
+							<li ng-if="vm.user.LevelOfUser">
+								<a href="javascript:void(0);">{{vm.user.LevelOfUser}}</a>
+							</li>
+							<li ng-if="vm.user.LevelOfUser == 'Teacher'">
+								<a href="javascript:void(0);">{{vm.user.ProviderType}}</a>
+							</li>
+							<li ng-if="vm.user.SelpaName">
+								<a href="javascript:void(0);">{{vm.user.SelpaName}}</a>
+							</li>
+							<li ng-if="vm.user.District">
+								<a href="javascript:void(0);">{{vm.user.District}}</a>
+							</li>
+							
+							<li ng-if="vm.schools.length > 0" class="divider"></li>
+							<li ng-if="vm.schools.length > 0" class="dropdown-header">School Access</li>
+							<li ng-if="vm.schools.length > 0" ng-repeat="school in vm.schools">
+								<a href="javascript:void(0);">{{school.School}}</a>
+							</li>
+							<li ng-if="vm.linkedAccounts.length > 0" class="divider"></li>
+							<li ng-repeat="linked in vm.linkedAccounts | limitTo:20">
+								<a ng-click="vm.loginAs(linked)">{{linked.UserName}}</a></li>
+							</li>
+						</ul>
+					</div> -->
+			</div>
+			<div class="social-media-icons pull-right" ng-hide="vm.isLoggedIn">
+				<a href="https://www.facebook.com/SEIS.org" target="_blank" title="SEIS Facebook"><i class="fa fa-facebook"></i></a>
+				<a href="http://www.twitter.com/CodeStackSJ" target="_blank" title="SEIS Twitter"><i class="fa fa-twitter"></i></a>
+			<a href="http://www.instagram.com/CodeStackSJ" target="_blank" title="SEIS Instagram"><i class="fa fa-instagram"></i></a>
+				<a href="http://www.youtube.com/CodeStackSJ" target="_blank" title="SEIS YouTube"><i class="fa fa-youtube"></i></a>
+			</div>
+		</div></header>
+		<!-- ngInclude: 'app/layout/menu.html' --><div ng-include="&#39;app/layout/menu.html&#39;" class="hidden-print ng-scope" style=""><div class="navbar navbar-default ng-scope ng-hide" ng-controller="MenuController as vm" ng-show="vm.isLoggedIn &amp;&amp; vm.signedTermsOfUse">
+    <div class="container-fluid" id="menu-container">
+        <!-- <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div> -->
+        <div class="navbar" style="margin-left:-15px; padding-left: 0" id="navbar-main">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a ui-sref="dashboard" ui-sref-opts="{ reload: true }" title="Home" style="font-size: 22px;" href="https://seis.org/dashboard">
+                        <i class="fa fa-home"></i>
+                    </a>
+				</li>
+                <li class="dropdown">
+                    <a href="https://seis.org/#" class="dropdown-toggle" data-toggle="dropdown">Students
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a ui-sref="ieps/search" ui-sref-opts="{ reload: true }" href="https://seis.org/ieps">Student IEPs</a>
+                        </li>
+                        <li>
+                            <!-- ngIf: vm.user.LevelOfUser != 'Teacher' --><a ui-sref="caseloads" ui-sref-opts="{ reload: true }" ng-if="vm.user.LevelOfUser != &#39;Teacher&#39;" class="ng-scope" href="https://seis.org/caseloads">Caseloads</a><!-- end ngIf: vm.user.LevelOfUser != 'Teacher' -->
+                        </li>
+                        <li>
+                            <!-- ngIf: vm.user.LevelOfUser === 'Teacher' -->
+                        </li>
+                        <li class="divider"></li>
+                        <li><a ui-sref="search/new/2({ searchID: 14063 })" ui-sref-opts="{ reload: true }" href="https://seis.org/search/new-search?searchID=14063">Eligible Students</a></li>
+                        <li><a ui-sref="search/new/2({ searchID: 14075 })" ui-sref-opts="{ reload: true }" href="https://seis.org/search/new-search?searchID=14075">Pending Students</a></li>
+                        <li class="divider" ng-hide="vm.user.LevelOfUser == &#39;Teacher&#39;"></li>
+                        <li><a ui-sref="search/new/2({ searchID: 14070 })" ui-sref-opts="{ reload: true }" ng-hide="vm.user.LevelOfUser == &#39;Teacher&#39;" href="https://seis.org/search/new-search?searchID=14070" class="">Exited Students</a></li>
+                        <li><a ui-sref="search/new/2({ searchID: 14073 })" ui-sref-opts="{ reload: true }" ng-hide="vm.user.LevelOfUser == &#39;Teacher&#39;" href="https://seis.org/search/new-search?searchID=14073" class="">Plan Type 700/800/900</a></li>
+                        <li><a ui-sref="search/new/2({ searchID: 15943 })" ui-sref-opts="{ reload: true }" ng-hide="vm.user.LevelOfUser == &#39;Teacher&#39;" href="https://seis.org/search/new-search?searchID=15943" class="">Transferred Students</a></li>
+                        <li><a ui-sref="search/new/2({ searchID: 15122 })" ui-sref-opts="{ reload: true }" href="https://seis.org/search/new-search?searchID=15122">IEP Dates</a></li>
+                        <li>
+                            <a ui-sref="ieps/bulkprint/iep" ui-sref-opts="{ reload: true }" href="https://seis.org/ieps/bulk">Bulk Print IEPs</a>
+                        </li>
+                        <li>
+                            <a ui-sref="ieps/bulkprint/progress" ui-sref-opts="{ reload: true }" href="https://seis.org/progress/bulk">Bulk Print PRs</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <!-- ngIf: vm.userContext.hasPermission(2) -->
+                        </li>
+                        <li>
+                            <!-- ngIf: vm.user.LevelOfUser === 'Teacher' || vm.user.LevelOfUser === 'School Site' -->
+                        </li>
+                        <li>
+                            <!-- ngIf: vm.user.LevelOfUser == 'Teacher' -->
+                        </li><li>
+                            <!-- ngIf: !vm.userContext.hasPermission(2) && vm.user.LevelOfUser == 'School Site' -->
+                        </li>
+                        <li>
+                            <!-- ngIf: vm.userContext.hasPermission(13) -->
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown" id="custom-search">
+                    <a href="https://seis.org/#" class="dropdown-toggle" data-toggle="dropdown">Searches
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+    <li><a ui-sref="search/new" ui-sref-opts="{ reload: true }" href="https://seis.org/search/new/searchID=">New Search</a></li>
+    <li class="dropdown dropdown-submenu"><a href="https://seis.org/#" class="dropdown-toggle" data-toggle="dropdown">My Custom Searches</a>
+        <ul class="dropdown-menu">
+            <li class=" dropdown dropdown-submenu"><a href="https://seis.org/#" class="dropdown-toggle" data-toggle="dropdown">Uncategorized searches</a>
+                <ul class="dropdown-menu">
+                    <!-- ngRepeat: item in vm.noCategory -->
+                </ul>
+            </li>
+            <!-- ngRepeat: category in vm.categories -->
+        </ul>
+    </li>
+    <li class="dropdown dropdown-submenu"><a href="https://seis.org/#" class="dropdown-toggle" data-toggle="dropdown">Shared Searches</a>
+        <ul class="dropdown-menu">
+            <!-- ngRepeat: item in vm.sharedSearches -->
+        </ul>
+    </li>
+    <!-- ngIf: vm.seisSearches.length > 0 -->
+    <li class="divider"></li>
+    <!-- ngRepeat: pinnedSearch in vm.pinnedSearches | limitTo:20 -->
+    
+</ul>
+                </li>
+                <!-- ngIf: (vm.user.LevelOfUser == 'District' || vm.user.LevelOfUser == 'Selpa') && (vm.userContext.hasPermission(9) || vm.userContext.hasPermission(48)) -->
+                <li class="dropdown">
+                    <a href="https://seis.org/#" class="dropdown-toggle" data-toggle="dropdown">Reports
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a ng-click="vm.redirectToAttendanceRegister()">Attendance Register</a>
+                        </li>
+                        <li>
+                            <a ui-sref="reports/comparison" ui-sref-opts="{ reload: true }" href="https://seis.org/reports/comparison">Comparison Reports</a>
+                        </li>
+                        <!-- ngIf: vm.user.LevelOfUser == 'Selpa' || vm.user.LevelOfUser == 'District' -->
+                        <!-- <li>
+                            <a ui-sref="reports/dlay" ui-sref-opts="{ reload: true }">DLAY Report</a>
+                        </li> -->
+                        <li>
+                            <a ui-sref="drdp/list({studentId:null})" ui-sref-opts="{ reload: true }" href="https://seis.org/drdps">DRDP Reports</a>
+                        </li>
+                        <li>
+                            <a ui-sref="reports/duplicate/services" ui-sref-opts="{ reload: true }" href="https://seis.org/reports/duplicate/services">Duplicate Services Report</a>
+                        </li>
+                        <li>
+                            <a ui-sref="reports/elpac" ui-sref-opts="{ reload: true }" href="https://seis.org/reports/elpac">ELPAC Report</a>
+                        </li>
+                        <!-- ngIf: vm.user.LevelOfUser == 'Selpa' || vm.user.LevelOfUser == 'District' -->
+                        <!-- ngIf: vm.user.LevelOfUser == 'Selpa' || vm.user.LevelOfUser == 'District' -->
+                        <li>
+                            <a ui-sref="reports/supplementaryaidsreport" ui-sref-opts="{ reload: true }" href="https://seis.org/reports/supplementaryaidsreport">Supplementary Aids Report</a>
+                        </li>
+                        <!-- <li>
+                            <a ui-sref="reports/tomsinterim" ui-sref-opts="{ reload: true }">TOMS Interim Assessments</a>
+                        </li> -->
+                        <li>
+                            <a ui-sref="reports/toms" ui-sref-opts="{ reload: true }" href="https://seis.org/reports/toms">TOMS Summative Assessments</a>
+                        </li>
+                        <li>
+                            <a ui-sref="reports/transportation" ui-sref-opts="{ reload: true }" href="https://seis.org/reports/transportation">Transportation Report</a>
+						</li>
+						<!-- <li>
+                            <a ui-sref="reports/pendingplantypereport" ui-sref-opts="{ reload: true }" ng-if="vm.canAccessPending300Report">Pending Plan Type 300 Students</a>
+                        </li> -->
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="https://seis.org/#" class="dropdown-toggle" data-toggle="dropdown">Goals
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <!-- ngIf: vm.user.LevelOfUser == 'Selpa' -->
+                        </li>
+                        <li>
+                            <!-- ngIf: vm.user.LevelOfUser == 'Selpa' -->
+                        </li>
+                        <li>
+                            <a ui-sref="goals.search" ui-sref-opts="{ reload: true }" href="https://seis.org/goals/search">Search Goal Banks</a>
+                        </li>
+                        <li>
+                            <!-- ngIf: vm.user.LevelOfUser == 'Teacher' -->
+                        </li>
+                        <li>
+                            <a ui-sref="reports/goals" ui-sref-opts="{ reload: true }" ng-hide="vm.user.LevelOfUser == &#39;Selpa&#39;" href="https://seis.org/reports/goals" class="">Student Goals Report</a>
+                        </li>
+                        <li>
+                            <!-- ngIf: vm.user.LevelOfUser == 'Teacher' -->
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="https://seis.org/#" class="dropdown-toggle" data-toggle="dropdown">Reference
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a ui-sref="documentlibrary" ui-sref-opts="{ reload: true }" href="https://seis.org/documentlibrary">Document Library</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- ngIf: vm.hasAdminPermission && vm.user.LevelOfUser !== 'Teacher' || vm.user.LevelOfUser === 'School Site' && vm.userContext.hasPermission(1) -->
+                <!-- ngIf: vm.userContext.hasPermission(38) -->
+                <li class="dropdown">
+                    <a href="https://seis.org/#" class="dropdown-toggle" data-toggle="dropdown">Training Materials
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        <li>
+                            <a ng-click="vm.newWindowFAQ()">FAQs</a>
+                        </li>
+                        <li>
+                            <a ui-sref="helpcenter/manuals" ui-sref-opts="{ reload: true }" href="https://seis.org/helpcenter/manuals">Training Materials</a>
+                        </li>
+                        <li>
+                            <a ui-sref="helpcenter/videos" ui-sref-opts="{ reload: true }" href="https://seis.org/helpcenter/videos">Training Videos</a>
+                        </li>
+                        <li>
+                            <a ui-sref="helpcenter/terms" ui-sref-opts="{ reload: true }" href="https://seis.org/helpcenter/terms">Terms of Use</a>
+                        </li>
+                    </ul>
+				</li>
+				<!-- ngIf: !vm.isDemo --><li data-ng-if="!vm.isDemo" class="ng-scope">
+					<a data-ng-click="vm.openContactModal()" title="Contact SEIS" style="cursor:pointer;">
+						Contact SEIS
+                    </a>
+				</li><!-- end ngIf: !vm.isDemo -->
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li style="margin-right: 1rem; height: 45px;">
+					<a href="javascript:void(0);" uib-tooltip="Log out" style="height: 100%" tooltip-append-to-body="true" data-ng-click="vm.logout()">
+                        <div style="float: left">
+                            <span style="font-size: 14px;">Logout</span>
+                        </div>
+                        <div style="float: right; padding-left: 10px;">
+                            <i class="fa fa-sign-out" aria-hidden="true" style="font-size: 22px;"></i>
+                        </div>   
+					</a>
+				</li>
+            </ul>
+        </div>
+    </div>
+</div></div>
+		<public-menu ng-hide="vm.isLoggedIn" class="hidden-print ng-isolate-scope"><div id="public-menu" class="navbar navbar-default">
+    <div class="container" id="menu-container">
+        <div class="full-nav">
+            <ul class="nav navbar-nav navbar-left" style="width: 100%;">
+                <li><a ui-sref="home" href="https://seis.org/">Home</a></li>
+                <!-- <li><a ui-sref="features">Features</a></li> -->
+                <!-- <li><a ui-sref="testimonials">Testimonials</a></li> -->
+                <li><a ui-sref="contact" ui-sref-opts="{reload: true}" href="https://seis.org/contact">Contact Us</a></li>
+                <li style="float: right !important"><a ui-sref="login" href="https://seis.org/login">Login</a></li>
+            </ul>
+        </div>
+        
+        <div class="mobile-nav">
+            <button class="hamburger hamburger--collapse mobile-nav-burger" type="button">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+            <a class="pull-right" href="https://seis.org/">
+                <img alt="Special Education Information System" src="./seis_files/logo.svg" style="height: 44px;">
+            </a>
+        </div>
+    </div>
+</div></public-menu>
+		<!-- <div ng-include="'app/layout/public/menu.html'" ng-hide="vm.isLoggedIn" class="hidden-print"></div> -->
+
+		<section ng-class="{&#39;casemis-season&#39;: vm.isCasemisSeason, &#39;container-fluid&#39;: vm.isLoggedIn, &#39;container&#39;: !vm.isLoggedIn &amp;&amp; !vm.isHomePage}" id="main-body" class="container">
+			<div id="page-title" class="row not-empty">
+				<div id="main-title" class="col-xs-6 left-col">
+					<h1 id="headerTitle" style="margin-top:0;" data-ng-bind="headerTitle" ng-hide="hideTitle" class="ng-binding">Login</h1>
+				</div>
+
+				<div class="col-xs-6 right-col">
+					<div class="pull-right">
+						<!-- ngIf: vm.isHelpdesk -->
+						<!--<button class="btn btn-warning" ng-if="vm.isLoggedIn && !vm.isDemo" ng-click="vm.reportBug()"><i class="fa fa-bug" aria-hidden="true"></i> Report Bug-->
+						<!--</button>-->
+						<!-- ngIf: vm.isHelpdesk -->
+						<!-- ngIf: vm.isLoggedIn && vm.helpGuide -->
+						<button ng-click="vm.showPrintQueue()" ng-show="vm.pendingPrintCount &gt; 0 &amp;&amp; vm.isLoggedIn" class="btn btn-warning ng-hide">
+							<span class="badge ng-binding">0</span> pending
+							<i title="print" class="fa fa-print"></i>
+							<i class="fa fa-circle-o-notch fa-spin"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+			<!-- uiView: --><div ui-view="" id="main-view" class="ng-scope" style="">
+<div class="panel ng-scope">
+	<div class="panel-body">
+		<loading-data data-loading="vm.loading" class="ng-isolate-scope"><div ng-show="loading" style="margin-top: 5px; display: inline-block;" class="ng-hide">
+    <span><i class="fa fa-refresh fa-spin fa-2x fa-fw"></i></span>
+
+    <h5 style="display: inline-block; padding: 0; margin-bottom: 0">Loading...</h5>
+</div></loading-data>
+
+		<!-- ngIf: !vm.loading --><form id="loginForm" name="loginForm" role="form" form-validation="" ng-submit="vm.signIn(this.loginForm)" ng-if="!vm.loading" class="ng-pristine ng-scope ng-invalid ng-invalid-required ng-valid-maxlength" novalidate="true">
+			<div class="row">
+				<div class="col-xs-12 col-sm-4 no-mrg-btm">
+					<div class="form-group">
+						<label for="username">Username</label>
+						<input class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="vm.loginData.userName" maxlength="50" id="username" name="username" data-char-count="false" required="" type="text">
+					</div>
+					<div class="form-group">
+						<label for="password">Password</label>
+						<input class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="vm.loginData.password" maxlength="50" id="password" name="password" required="" type="password">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-4 no-mrg-btm">
+					<button class="btn btn-primary" type="submit" style="margin-right:0.5em;">
+						Login
+						<i ng-show="vm.loading" class="fa fa-circle-o-notch fa-spin ng-hide"></i>
+					</button>
+					<a ui-sref="forgot/password" href="https://seis.org/forgot/password">
+						Forgot Password?
+					</a>
+				</div>
+			</div>
+			<!-- ngIf: vm.errorMessage !== null -->
+			<div class="row" style="margin-top:2em;">
+				<div class="col-xs-12 no-mrg-btm">
+					Due to the confidentiality of student data, do not save your password to your internet browser.
+				</div>
+			</div>
+		</form><!-- end ngIf: !vm.loading -->
+	</div>
+</div></div>
+			<div class="scroll-top">
+				<button class="btn btn-primary" title="Scroll to Top" ng-click="vm.scrollTop()">
+					<i class="fa fa-arrow-up"></i>
+				</button>
+			</div>
+		</section>
+
+	</div>
+	<footer id="footer" class="hidden-print">
+		<div id="footerCont" class="container">
+			<div class="row">
+				<div class="col-xs-12 col-md-5 no-mrg-btm">
+					<div class="pull-right ng-binding">Version: develop</div>
+					<h2 class="about">About SEIS</h2>
+					<p>SEIS is managed and maintained by CodeStack, a department of the San Joaquin County Office of Education.
+						Copyright © 2015
+						SEIS. All rights reserved. <a href="https://seis.org/requirements" ui-sref="requirements">System Requirements</a></p>
+
+					<div class="logo-control">
+						<a href="http://www.sjcoe.org/" target="_blank">
+							<img class="footer-logo sjc" src="./seis_files/sjcoe.png" alt="SJCOE logo">
+						</a>
+
+						<a href="http://www.codestack.org/" target="_blank">
+							<img class="footer-logo codestack" src="./seis_files/CodeStack.png" alt="CodeStack logo">
+						</a>
+					</div>
+				</div>
+
+				<div class="col-xs-12 col-md-3 no-mrg-btm">
+					<h2>Follow Us On</h2>
+					<a href="http://www.twitter.com/CodeStackSJ" target="_blank" class="social-icon">
+						<img src="./seis_files/twitter.jpg" alt="CodeStack Twitter" title="Twitter">
+					</a>
+
+					<a href="http://www.instagram.com/CodeStackSJ" target="_blank" class="social-icon">
+						<img src="./seis_files/instagram.jpg" alt="CodeStack Instagram" title="CodeStack Instagram">
+					</a>
+
+					<a href="http://www.youtube.com/CodeStackSJ" target="_blank" class="social-icon">
+						<img src="./seis_files/youtube.jpg" alt="CodeStack YouTube" title="CodeStack YouTube">
+					</a>
+
+					<a href="https://www.facebook.com/SEIS.org" target="_blank" class="social-icon">
+						<img src="./seis_files/facebook.jpg" alt="SEIS Facebook" title="SEIS Facebook">
+					</a>
+
+					<h2 class="join">Join Our Team</h2>
+					<p>Visit
+						<a href="https://www.edjoin.org/sjcoe" target="_blank">EDJOIN.org</a> to view our open positions.</p>
+				</div>
+
+				<div class="col-xs-12 col-md-4 no-mrg-btm">
+					<h2>CodeStack Sites</h2>
+					<ul class="cedr-sites">
+						<li>
+							<a href="http://www.codestack.org/" target="_blank">
+								<img src="./seis_files/icon_codestack.png" alt="CodeStack" title="CodeStack">CodeStack
+							</a>
+						</li>
+
+						<li>
+							<a href="https://seis.org/" target="_blank">
+								<img src="./seis_files/icon_seis.png" alt="SEIS" title="SEIS">SEIS
+							</a>
+						</li>
+
+						<li>
+							<a href="http://www.edjoin.org/" target="_blank">
+								<img src="./seis_files/icon_edjoin.png" alt="EDJOIN" title="EDJOIN">EDJOIN
+							</a>
+						</li>
+
+						<li>
+							<a href="http://www.mypromis.org/" target="_blank">
+								<img src="./seis_files/icon_promis.png" alt="PROMIS" title="PROMIS">PROMIS
+							</a>
+						</li>
+
+						<li>
+							<a href="http://www.beyondsst.org/" target="_blank">
+								<img src="./seis_files/icon_sst.png" alt="Beyond SST" title="Beyond SST">Beyond SST
+							</a>
+						</li>
+
+						<li>
+							<a href="http://www.csconf.org/" target="_blank">
+								<img src="./seis_files/csconf_2022.png" alt="CodeStack Conference" title="CodeStack Conference">CodeStack Conference
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+</div></div>
+    <script src="./seis_files/lib-ace6031f97.js"></script>
+
+    <script>
+        var $zoho=$zoho || {};
+        $zoho.salesiq = $zoho.salesiq || {
+            values:{},
+            ready:function(){ }};
+        <!-- build:zohowidgetcode -->
+        $zoho.salesiq.widgetcode='98d8997d9f89644ed3c1d2ab3b75a9775ea542aecee69b878ded9b670d76ad711a2010ab7b6727677d37b27582c0e9c4';
+        <!-- endbuild -->
+
+
+
+
+
+    </script>
+
+    <!-- Bootstrapping -->
+    <!-- Additional scripts -->
+
+    <script src="./seis_files/vendor-7e9fae2b43.js"></script>
+
+    <script src="./seis_files/app-10e694a5d3.js"></script>
+
+    <!-- inject:templates:js -->
+    <!-- endinject -->
+
+
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration><wordtune-read-extension></wordtune-read-extension></html>
