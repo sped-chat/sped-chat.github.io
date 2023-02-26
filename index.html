@@ -11,7 +11,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 100vh;
+        height: 100vh; /* Set the height of the body to the full viewport height */
       }
       
       h1 {
@@ -22,10 +22,13 @@
       
       form {
         margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
       }
       
       div {
-        display: block;
         margin-top: 10px;
       }
       
@@ -55,11 +58,13 @@
   </head>
   
   <body>
-    <h1>SPED CHAT</h1>
+    <h1>beta.sped.chat</h1>
     <form action="https://formspree.io/f/mzbqgpyo" method="post">
-      <input type="email" name="email" placeholder="you@there.com" required>
       <div>
-        <input type="submit" value="Request Beta Access">
+        <input type="email" name="email" placeholder="you@there.com" required>
+      </div>
+      <div>
+        <input type="submit" value="Request Invite">
       </div>
     </form>
   </body>
