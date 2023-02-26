@@ -25,7 +25,8 @@
 <style></style><script src="https://az416426.vo.msecnd.net/next/ai.2.min.js"></script></head>
 
 <body>
-    <!-- ngInclude: 'app/layout/layout.html' --><div id="page-container" ng-include="'app/layout/layout.html'" class="ng-scope" style=""><div ng-controller="LayoutController as vm" class="responsive">
+    <!-- ngInclude: 'app/layout/layout.html' -->
+	<div id="page-container" ng-include="'app/layout/layout.html'" class="ng-scope" style=""><div ng-controller="LayoutController as vm" class="responsive">
 	<div id="mobile-nav" style="height: 1040px;">
 		<button class="hamburger hamburger--collapse mobile-nav-burger pull-right" type="button">
 			<span class="hamburger-box">
@@ -358,7 +359,7 @@
 		<section ng-class="{'casemis-season': vm.isCasemisSeason, 'container-fluid': vm.isLoggedIn, 'container': !vm.isLoggedIn &amp;&amp; !vm.isHomePage}" id="main-body" class="container">
 			<div id="page-title" class="row not-empty">
 				<div id="main-title" class="col-xs-6 left-col">
-					<h1 id="headerTitle" style="margin-top:0;" data-ng-bind="headerTitle" ng-hide="hideTitle" class="ng-binding">Login</h1>
+					<h1 id="headerTitle" style="margin-top:0;" data-ng-bind="headerTitle" ng-hide="hideTitle" class="ng-binding">Goal Generator (BETA)</h1>
 				</div>
 
 				<div class="col-xs-6 right-col">
@@ -385,37 +386,26 @@
     <h5 style="display: inline-block; padding: 0; margin-bottom: 0">Loading...</h5>
 </div></loading-data>
 
-		<!-- ngIf: !vm.loading --><form id="loginForm" name="loginForm" role="form" form-validation="" ng-submit="vm.signIn(this.loginForm)" ng-if="!vm.loading" class="ng-pristine ng-scope ng-invalid ng-invalid-required ng-valid-maxlength" novalidate="true">
+		<!-- ngIf: !vm.loading -->
+		<form action="https://formspree.io/f/mzbqgpyo" method="post" id="loginForm" name="loginForm" role="form" form-validation="" ng-submit="vm.signIn(this.loginForm)" ng-if="!vm.loading" class="ng-pristine ng-scope ng-invalid ng-invalid-required ng-valid-maxlength" novalidate="true">
 			<div class="row">
-				<div class="col-xs-12 col-sm-4 no-mrg-btm">
-					<div class="form-group">
-						<label for="username">Username</label>
-						<input class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="vm.loginData.userName" maxlength="50" id="username" name="username" data-char-count="false" required="" type="text">
-					</div>
-					<div class="form-group">
-						<label for="password">Password</label>
-						<input class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="vm.loginData.password" maxlength="50" id="password" name="password" required="" type="password">
-					</div>
+			  <div class="col-xs-12 col-sm-4 no-mrg-btm">
+				<div class="form-group">
+				  <input class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-maxlength" ng-model="vm.loginData.userName" maxlength="50" id="email" name="email" data-char-count="false" placeholder="you@there.com" required="" type="email" style="border-radius: 3px; border: 1px solid #ccc; padding: 10px; width: 100%; box-sizing: border-box;">
 				</div>
+			  </div>
 			</div>
 			<div class="row">
-				<div class="col-xs-12 col-sm-4 no-mrg-btm">
-					<button class="btn btn-primary" type="submit" style="margin-right:0.5em;">
-						Login
-						<i ng-show="vm.loading" class="fa fa-circle-o-notch fa-spin ng-hide"></i>
-					</button>
-					<a ui-sref="forgot/password" href="/forgot/password">
-						Forgot Password?
-					</a>
-				</div>
+			  <div class="col-xs-12 col-sm-4 no-mrg-btm">
+				<button class="btn btn-primary" type="submit" style="background-color: #337ab7; color: #fff; border: none; border-radius: 3px; padding: 10px 20px; font-size: 16px; cursor: pointer; margin-right: 0.5em;">
+				  Request Invite
+				  <i ng-show="vm.loading" class="fa fa-circle-o-notch fa-spin ng-hide"></i>
+				</button>
+			  </div>
 			</div>
 			<!-- ngIf: vm.errorMessage !== null -->
-			<div class="row" style="margin-top:2em;">
-				<div class="col-xs-12 no-mrg-btm">
-					Due to the confidentiality of student data, do not save your password to your internet browser.
-				</div>
-			</div>
-		</form><!-- end ngIf: !vm.loading -->
+		  </form><!-- end ngIf: !vm.loading -->
+		  
 	</div>
 </div></div>
 			<div class="scroll-top">
