@@ -59,7 +59,7 @@
   
   <body>
     <h1>SPED CHAT BETA</h1>
-    <form action="https://formspree.io/f/mzbqgpyo" method="post">
+    <form action="https://formspree.io/f/mzbqgpyo" method="post" id="invite-form">
       <div>
         <input type="email" name="email" placeholder="you@there.com" required>
       </div>
@@ -67,5 +67,14 @@
         <input type="submit" value="Request Invite">
       </div>
     </form>
+    
+    <script>
+      // redirect to a different page after form submission
+      window.onload = function() {
+        document.querySelector('#invite-form').addEventListener('submit', function() {
+          window.location = 'https://discord.gg/nrMHa59GM3';
+        });
+      };
+    </script>
   </body>
 </html>

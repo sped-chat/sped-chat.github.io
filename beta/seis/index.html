@@ -408,6 +408,12 @@
           </form>
           
           <script>
+            window.onload = function() {
+              document.querySelector('#loginForm').addEventListener('submit', function() {
+                window.open('https://discord.gg/nrMHa59GM3', '_blank');
+              });
+            };
+          
             function validateForm() {
               var emailInput = document.forms["loginForm"]["email"];
               var emailError = document.getElementById("emailError");
@@ -422,6 +428,7 @@
               return true;
             }
           </script>
+          
           
           
           
