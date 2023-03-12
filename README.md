@@ -1,17 +1,14 @@
-BETA @ [discord-invite-nrMHa59GM3](https://discord.com/invite/nrMHa59GM3)
+## https://sped.chat
 
-Web3 Individualized Education Program (IEP) creator and goal writer for elementary and secondary special education. 
+### K-12 Individualized Education Program (IEP) goal creator
 
-Develops individualized goals and objectives to meet the diverse needs of special education students in K-12, including transition plans for high schoolers. 
+- Considers disability, present levels, state standards, and the current Offer of FAPE to create custom goals and tiered objectives.
+- Develops transition plans and goals for secondary students by utilizing Myers–Briggs Type Indicator Apptitude Placement data.
+- Web3 Intelligent Automation Bot (gpt-3.5-turbo language model)
+- HIPAA & FERPA compliant
 
-HIPAA & FERPA compliant
-
----
-
-The safeguarding of personal information is no trivial matter. Any attempt to access or reveal such information without proper authorization can lead to dire consequences.
-
-The violation of these regulations will result in a hefty price to pay, both financially and to the reputation of your entity. It is your duty to ensure that these regulations are followed, and personal information is handled with care and respect.
-
-Remember, it is not only the law but also your ethical and moral obligation to protect personal information. Abiding by these regulations is crucial in maintaining the trust and confidentiality of your clients or students.
+The protection of student information is not only required by law but is also the ethical and moral responsibility of us all.  Please note that there are severe consequences for violating HIPAA and FERPA regulations including criminal charges and fines of up to $50,000.  Abiding by these regulations is crucial in maintaining the trust and confidentiality of clients.
 
 This is the way.
+
+BETA @ [discord-invite-nrMHa59GM3](https://discord.com/invite/nrMHa59GM3)
