@@ -10,7 +10,7 @@ While confidential student data is not able to be entered and is immediately fla
 Join our beta testing program and provide feedback to help us refine and perfect our offering.
 
 This is the way:
-[discord-invite-nrMHa59GM3](https://discord.com/invite/nrMHa59GM3).
+[discord-invite-nrMHa59GM3](https://discord.com/invite/nrMHa59GM3)
 
 ---
 
