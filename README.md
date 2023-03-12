@@ -6,7 +6,7 @@
 - Develops transition plans and goals for secondary students by utilizing Myers–Briggs Type Indicator Aptitude Placement data obtained from natural language discussion with the student.
 - HIPAA & FERPA compliant
 
-Join our beta testing program and provide feedback to help us refine and perfect our offering at [discord-invite-nrMHa59GM3](https://discord.com/invite/nrMHa59GM3).
+Join our beta testing program and provide feedback at [discord-invite-nrMHa59GM3](https://discord.com/invite/nrMHa59GM3).
 
 SPEDChat is an intelligent automation model powered by Web3, DaVinci-003, and GPT-3.5-Turbo-0301. 
 
